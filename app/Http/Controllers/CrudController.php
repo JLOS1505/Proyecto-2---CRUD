@@ -26,6 +26,16 @@ class CrudController extends Controller
             return back()->withInput()->with("incorrecto", "Error: Carácter no valido en Cantidad (solo numeros).");
         }
 
+        if (!preg_match("/^[a-zA-Z\s]+$/", $request->txtnombre)) {
+            return back()->withInput()->with("incorrecto", "Error: Carácter '{$request->txtnombre}' no valido en Nombre");
+        }
+        
+        // Validar que el ID no exista en la base de datos
+        $existingID = DB::table('producto')->where('id_producto', $request->txtcodigo)->exists();
+        if ($existingID) {
+             return back()->withInput()->with("incorrecto", "Error: El ID '{$request->txtcodigo}' ya existe en la base de datos.");
+        }
+
         try {
             $sql = DB::insert("insert into producto(id_producto, nombre, precio, cantidad)values(?, ?, ?, ?) ", [
                 $request->txtcodigo,
@@ -55,6 +65,15 @@ class CrudController extends Controller
         }
         if (!is_numeric($request->txtcantidad)|| $request->txtcantidad < 0) {
             return back()->with("incorrecto", "Error: Carácter no valido en Cantidad (solo numeros).");
+        }
+
+        if (!preg_match("/^[a-zA-Z\s]+$/", $request->txtnombre)) {
+            return back()->withInput()->with("incorrecto", "Error: Carácter '{$request->txtnombre}' no valido en Nombre");
+        }
+
+        $existingID = DB::table('producto')->where('id_producto', $request->txtcodigo)->exists();
+        if ($existingID) {
+             return back()->withInput()->with("incorrecto", "Error: El ID '{$request->txtcodigo}' ya existe en la base de datos.");
         }
 
         try {

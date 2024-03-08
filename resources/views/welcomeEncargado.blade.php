@@ -40,22 +40,22 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Codigo del Encargado</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" 
-                    aria-describedby="emailHelp" name="txtcodigo">
+                    aria-describedby="emailHelp" name="txtcodigo" value="{{ old('txtcodigo') }}" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nombre del Encargado</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" 
-                    aria-describedby="emailHelp" name="txtnombre">
+                    aria-describedby="emailHelp" name="txtnombre" value="{{ old('txtnombre') }}" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Area del Encargado</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" 
-                    aria-describedby="emailHelp" name="txtarea">
+                    aria-describedby="emailHelp" name="txtarea" value="{{ old('txtarea') }}" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Sueldo del Encargado</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" 
-                    aria-describedby="emailHelp" name="txtsueldo">
+                    aria-describedby="emailHelp" name="txtsueldo" value="{{ old('txtsueldo') }}" >
                 </div>
                 
                 <div class="modal-footer">
