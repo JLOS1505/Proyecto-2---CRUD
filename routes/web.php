@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\CrudEncargadoController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CrudController::class, "index"])->name("crud.index");
+// Ruta para mostrar el formulario de inicio de sesión
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('crud.index');
+
+// Rutas para mostrar el formulario de registro de usuario
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+// Ruta para mostrar el Logout
+Route::post('/logout', [RegisterController::class, 'logout'])->name('logout');
+
+Route::get('/producto', [CrudController::class, "index"])->name("crud.index");
 
 Route::get('/encargado', [CrudEncargadoController::class, "index"])->name("crudEncargado.index");
 
@@ -36,3 +48,6 @@ Route::post('/modificar-encargado', [CrudEncargadoController::class, "update"])-
 
 ///Ruta para eliminar un nuevo Encargado
 Route::get('/eliminar-encargado-{id}', [CrudEncargadoController::class, "delete"])->name("crud.deleteEncargado");
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -148,6 +148,17 @@
     <div style="text-align: center;">
         <a class="btn btn-outline-danger btn-sm" href="{{ route('crudEncargado.index') }}">CRUD encargados</a>
     </div>
+
+    <nav style="text-align: right; padding: 10px;">
+        <form action="{{ route('logout') }}" method="POST">
+         @csrf
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    </nav>
+
+</div>
+
+
  
 </body>
 

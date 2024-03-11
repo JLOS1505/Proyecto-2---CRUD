@@ -149,6 +149,13 @@
         <a  class="btn btn-outline-danger btn-sm" href="{{ route('crud.index') }}">CRUD productos</a>
     </div>
 
+    <nav style="text-align: right; padding: 10px;">
+        <form action="{{ route('logout') }}" method="POST">
+         @csrf
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    </nav>
+
 </body>
 
 </html>
